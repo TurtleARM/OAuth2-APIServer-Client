@@ -1,0 +1,27 @@
+server:
+  port: 8444
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore.p12
+    key-store-password: password
+    key-alias: soasec
+    enabled: true
+    trust-store: C:\Program Files\Java\jdk-11.0.8\lib\security\cacerts
+    trust-store-password: changeit
+    key-store-provider: SUN
+
+#security:
+#  oauth2:
+#    client:
+#      clientId: clientapp
+#      clientSecret: strongpassword
+#      scope: read_profile_info
+#      grant-type: authorization_code,refresh_token,password
+#      use-current-uri: false
+#      resource-ids: code
+#      registered-redirect-uri: http://localhost:8081/securedPage
+#      pre-established-redirect-uri: http://localhost:8081/securedPage
+#    resource:
+#      token-info-uri: http://localhost:8080/oauth/check_token
+#      user-info-uri: http://localhost:8080/api/users/me
+#
