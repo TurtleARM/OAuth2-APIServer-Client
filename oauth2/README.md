@@ -1,1 +1,1 @@
-# OAuth2 API and Client
+# OAuth2 API
