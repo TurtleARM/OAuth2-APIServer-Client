@@ -83,6 +83,7 @@ public class WebController {
     @ResponseBody
     public String password(@RequestParam String username, @RequestParam String password) throws ParseException {
         Connection.Response res;
+        String scope = username.equals("auditor") ? "edit_profile_info" : "read_profile_info";
         try {
             res = Jsoup
                     .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/"
@@ -90,6 +91,7 @@ public class WebController {
                     .data("username", username)
                     .data("password", password)
                     .data("grant_type", "password")
+                    .data("scope", scope)
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .header("authorization", "Basic Y2xpZW50YXBwOnN0cm9uZ3Bhc3N3b3Jk")
                     .userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0")
@@ -125,6 +127,12 @@ public class WebController {
             return "Error: " + ex;
         }
         return res.body();
+    }
+
+    @GetMapping("/logout")
+    @ResponseBody
+    public String logout() {
+        return "Logout Successful";
     }
 
     private String printResponse(Connection.Response res) throws ParseException {

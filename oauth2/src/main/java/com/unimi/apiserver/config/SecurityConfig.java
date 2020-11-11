@@ -16,12 +16,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
+        auth.inMemoryAuthentication()
                 .withUser("soasec")
-                .password(passwordEncoder()
-                        .encode("strongpassword"))
-                .roles("USER");
+                .password(passwordEncoder().encode("strongpassword"))
+                .authorities("ROLE_USER")
+        .and()
+                .withUser("auditor")
+                .password(passwordEncoder().encode("strongpassword"))
+                .authorities("ROLE_USER", "ROLE_ADMIN");
     }
 
     @Override
@@ -36,7 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll();
+                .formLogin().permitAll()
+                .and()
+                .logout().logoutSuccessUrl("https://localhost:8444/logout")
+                .permitAll();
     }
 
     @Override
@@ -52,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){ 
-        return new BCryptPasswordEncoder(); 
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

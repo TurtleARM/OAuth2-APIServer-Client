@@ -64,7 +64,7 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
 					.authorizedGrantTypes("password", "authorization_code", "refresh_token", "client_credentials", "implicit")
 					.accessTokenValiditySeconds(20)
 				    .refreshTokenValiditySeconds(60)
-					.scopes("read_profile_info")
+					.scopes("read_profile_info", "edit_profile_info")
 					.resourceIds("user-details")
 					.redirectUris("https://localhost:8444/callbackPage");
 	}
