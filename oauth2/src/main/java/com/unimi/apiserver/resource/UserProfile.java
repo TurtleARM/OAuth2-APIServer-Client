@@ -12,7 +12,7 @@ public class UserProfile {
 	private String name;
 	private String email;
 
-	// Ordini tra cui l'operatore può scegliere
+	// Ordini tra i quali l'operatore può scegliere
 	private List<Ordine> ordiniDisponibili;
 
 	public UserProfile() {
