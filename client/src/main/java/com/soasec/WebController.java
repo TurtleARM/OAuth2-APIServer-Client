@@ -24,9 +24,12 @@ public class WebController {
 
     @GetMapping("/callbackPage")
     @ResponseBody
-    public String callbackPage(@RequestParam(required = false) String code) throws ParseException {
+    public String callbackPage(@RequestParam(required = false) String code, @RequestParam(required = false) String state) throws ParseException {
         // clientapp:strongpassword
         if (code != null) { // Auth code
+            if (state != null && !state.equals("abcd1234")) {
+                return "Error: wrong state parameter";
+            }
             Connection.Response res;
             try {
                 res = Jsoup
