@@ -30,7 +30,8 @@ public class WebController {
             Connection.Response res;
             try {
                 res = Jsoup
-                        .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/" + URLEncoder.encode("token", "UTF-8"))
+                        .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/"
+                                + URLEncoder.encode("token", "UTF-8"))
                         .data("code", code)
                         .data("grant_type", "authorization_code")
                         .data("redirect_uri", "https://localhost:8444/callbackPage")
@@ -57,7 +58,8 @@ public class WebController {
         Connection.Response res;
         try {
             res = Jsoup
-                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/" + URLEncoder.encode("token", "UTF-8"))
+                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/"
+                            + URLEncoder.encode("token", "UTF-8"))
                     .data("refresh_token", token)
                     .data("grant_type", "refresh_token")
                     .header("Content-Type", "application/x-www-form-urlencoded")
@@ -80,7 +82,8 @@ public class WebController {
         Connection.Response res;
         try {
             res = Jsoup
-                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/" + URLEncoder.encode("token", "UTF-8"))
+                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/"
+                            + URLEncoder.encode("token", "UTF-8"))
                     .data("username", username)
                     .data("password", password)
                     .data("grant_type", "password")
@@ -104,7 +107,8 @@ public class WebController {
         Connection.Response res;
         try {
             res = Jsoup
-                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/" + URLEncoder.encode("token", "UTF-8"))
+                    .connect("https://localhost:8443/" + URLEncoder.encode("oauth", "UTF-8") + "/"
+                            + URLEncoder.encode("token", "UTF-8"))
                     .data("grant_type", "client_credentials")
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .header("authorization", "Basic Y2xpZW50YXBwOnN0cm9uZ3Bhc3N3b3Jk")
